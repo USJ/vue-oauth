@@ -1,6 +1,6 @@
 {
   "name": "@usj/vue-oauth",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "main": "dist/@usj/vue-oauth.js",
   "module": "dist/@usj/vue-oauth.es.js",
   "license": "MIT",
@@ -15,6 +15,7 @@
       "bili index.js -o dist --format cjs --format es --format umd --compress umd"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "query-string": "^5.1.0"
   }
 }

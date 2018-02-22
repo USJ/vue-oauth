@@ -1,3 +1,5 @@
+import queryString from 'query-string'
+
 export default function buildOAuthUrl(params) {
   let oAuthScope = params.scope ? encodeURIComponent(params.scope) : ''
   let state = params.state ? encodeURIComponent(params.state) : ''
@@ -8,24 +10,19 @@ export default function buildOAuthUrl(params) {
     ? encodeURIComponent(params.responseType)
     : 'token'
 
+  const query = {
+    response_type: responseType,
+    client_id: params.clientId,
+    redirect_uri: params.redirectUri,
+    scope: oAuthScope,
+    state
+  }
+
   return (
     params.site +
     params.authorizePath +
     appendChar +
-    'response_type=' +
-    responseType +
-    '&' +
-    'client_id=' +
-    encodeURIComponent(params.clientId) +
-    '&' +
-    'redirect_uri=' +
-    encodeURIComponent(params.redirectUri) +
-    '&' +
-    'scope=' +
-    oAuthScope +
-    '&' +
-    'state=' +
-    state +
+    queryString.stringify(query) +
     nonceParam
   )
 }
