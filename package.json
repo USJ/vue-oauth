@@ -1,9 +1,15 @@
 {
   "name": "@usj/vue-oauth",
-  "version": "1.0.0-alpha.1",
-  "main": "index.js",
+  "version": "1.0.0-alpha.2",
+  "main": "dist/@usj/vue-oauth.js",
   "license": "MIT",
   "peerDependencies": {
     "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "bili": "^2.2.7"
+  },
+  "scripts": {
+    "build": "bili --js babel --format umd index.js"
   }
 }
