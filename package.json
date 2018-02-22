@@ -1,0 +1,9 @@
+{
+  "name": "@usj/vue-oauth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "axios": "^0.18.0"
+  }
+}
