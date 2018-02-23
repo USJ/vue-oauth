@@ -12,7 +12,8 @@
   },
   "scripts": {
     "build":
-      "bili index.js -o dist --format cjs --format es --format umd --compress umd"
+      "bili index.js -o dist --format cjs --format es --format umd --compress umd",
+    "release:prerelease": "npm version prerelease && npm publish"
   },
   "dependencies": {
     "axios": "^0.18.0",
