@@ -5,6 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var axios = _interopDefault(require('axios'));
+var queryString = _interopDefault(require('query-string'));
 
 function buildOAuthUrl(params) {
   var oAuthScope = params.scope ? encodeURIComponent(params.scope) : '';
@@ -14,7 +15,15 @@ function buildOAuthUrl(params) {
   var nonceParam = params.nonce ? '&nonce=' + params.nonce : '';
   var responseType = params.responseType ? encodeURIComponent(params.responseType) : 'token';
 
-  return params.site + params.authorizePath + appendChar + 'response_type=' + responseType + '&' + 'client_id=' + encodeURIComponent(params.clientId) + '&' + 'redirect_uri=' + encodeURIComponent(params.redirectUri) + '&' + 'scope=' + oAuthScope + '&' + 'state=' + state + nonceParam;
+  var query = {
+    response_type: responseType,
+    client_id: params.clientId,
+    redirect_uri: params.redirectUri,
+    scope: oAuthScope,
+    state: state
+  };
+
+  return params.site + params.authorizePath + appendChar + queryString.stringify(query) + nonceParam;
 }
 
 var oauthInstance;
